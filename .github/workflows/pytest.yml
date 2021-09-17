@@ -1,0 +1,12 @@
+name: Run Pytest
+on: [push]
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Run Pytest
+      run: scripts/run_tests.sh
