@@ -2,8 +2,11 @@ FROM python:3.8
 
 WORKDIR /home/action_playground
 
-ADD requirements.txt .
+COPY tests/ /home/action_playground/tests/
 
-RUN pip install -r requirements.txt
+COPY Pipfile /home/action_playground
 
-ENTRYPOINT pytest tests/
+RUN pip install pipenv
+RUN pipenv install
+
+ENTRYPOINT pipenv run pytest tests/
